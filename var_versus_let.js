@@ -1,30 +1,26 @@
 'use strict';
 
 
-var z = 0;
-
 // When using var, a variable is created in the global or lexical (i.e. function) scope
 
-for (var i = 1; i < 10; i++) {
+
+for (var i = 1; i < 5; i++) {
+  // z is defined using var (in the global scope, since there is no lexical scope)
   var z = i * 3;
-  setImmediate(() => { console.log('Using let, i is', i, 'z is', z); });
+  setImmediate(() => { console.log(`Using var: i is ${i}, z is ${z}`); });
 }
 
-console.log('After the loop, i is', i, 'z is', z);
+console.log('After the first loop, i is', i, 'z is', z);
 
 
 
 
 // When using let, a variable is declared in the block (in this case, the for loop) scope
 
-for (let j = 1; j < 10; j++) {
-  let z = j * 3;
-  setImmediate(() => { console.log('Using let, j is', j, 'z is', z); });
+for (var i = 1; i < 7; i++) {
+  let z = i * 3;
+  setImmediate(() => { console.log(`Using let: i is ${i}, z is ${z}`); });
 }
 
-try{
-  console.log('After the loop, j is', j, 'z is', z);
-} catch (error){
-  console.log(error);
-}
+console.log('After the second loop, i is', i, 'z is', z);
 
